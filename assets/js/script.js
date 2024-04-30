@@ -1,8 +1,3 @@
-var popoverTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="popover"]'));
-var popoverList = popoverTriggerList.map(function (popoverTriggerEl) {
-  return new bootstrap.Popover(popoverTriggerEl)
-});
-
 let urlApi = "https://jsonplaceholder.typicode.com/posts";
 
 const getData = async (url) => {
@@ -12,12 +7,10 @@ const getData = async (url) => {
         console.log(response);
         let data = await response.json();
         return data;
-        code = response.status;
 
     } catch (error) {
-        console.log(error);
-        return { code, error };
-        // return "Ha fallado el llamado a la API.";
+        console.log("Ha ocurrido un error: ", error.message);
+        return "Ha fallado el llamado a la API.";
     }
 }
 
